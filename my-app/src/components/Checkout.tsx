@@ -17,8 +17,7 @@ function Checkout(){
         <div >
 
             <Cart/>
-            <CheckoutFracksatt/>
-            <Radiobutton />
+            
             <TotalPrice/>
             
 
