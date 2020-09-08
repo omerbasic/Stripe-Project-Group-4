@@ -6,7 +6,7 @@ const { Footer } = Layout;
 
 function footer(){
     return(
-        <Footer style={footerStyle}>CopyRight Front-end: Abbe, Ensar, and Anu || Back-end: Ensar, Michelle, Samer, Humayun</Footer>
+        <Footer style={footerStyle}>Contributors: Abbe, Anu, Ensar, Michelle, Samer, Humayun</Footer>
   );
   
   }
@@ -17,7 +17,9 @@ function footer(){
     textAlign: "center",
     color:"white",
     marginTop:"50px",
-    height: "40px"
+    height: "40px",
+    position: "fixed",
+    bottom: "0"
    
   };
   export default footer;

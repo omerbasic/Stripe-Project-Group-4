@@ -24,11 +24,11 @@ export class TotalPrice extends Component<{}, State>{
                 <CartConsumer>
                     {() => (
                         <div style={CheckoutContainer}>
-                            <h3>Checkout</h3>
-                            <p>Proceed with your payment with</p>
-                            <Button style={ButtonNoBorder}>
+                            <h3>Card Payment</h3>
+                            <p>Proceed with payment via card with</p>
+                            <button style={ButtonNoBorder}>
                                <StripeLogo></StripeLogo>
-                            </Button>
+                            </button>
                 
                         </div>
                     )}
@@ -55,13 +55,15 @@ export let CheckoutContainer: CSSProperties = {
     borderRadius: "8px",
     margin: "0 auto",
     textAlign: "center",
-    padding: "50px"
+    padding: "50px",
+    width: "100%"
 
 }
 
 
 export let ButtonNoBorder: CSSProperties = {
 
-    border: "none"
+    border: "none",
+    backgroundColor: "white"
 
 }
