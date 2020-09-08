@@ -20,12 +20,10 @@ export class TotalPrice extends Component<{}, State>{
         render(){
             return(
                 <CartConsumer>
-                    {({ getTotalPrice, selectedShipping }) => (
+                    {() => (
                         <div>
-                            <h2>Total price including shipping & VAT:</h2> 
-                                
-                            <h2> {getTotalPrice() + selectedShipping.cost} :- </h2>
-                            <p> VAT: {(getTotalPrice() + selectedShipping.cost) * 0.2} :- </p>
+                            Hej här jobbar vi med stripe
+                
                         </div>
                     )}
                
