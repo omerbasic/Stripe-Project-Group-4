@@ -15,6 +15,7 @@
     "@types/react-stripe-elements": "^6.0.4",
     "@types/stripe": "^7.13.23",
     "antd": "^4.6.3",
+    "express": "^4.17.1",
     "formik": "^2.1.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -22,7 +23,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "react-stripe-elements": "^6.1.2",
-    "stripe": "^8.56.0",
+    "stripe": "^8.92.0",
     "typescript": "^3.7.5"
   },
   "scripts": {

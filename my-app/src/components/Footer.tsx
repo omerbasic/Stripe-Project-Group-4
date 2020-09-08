@@ -6,7 +6,7 @@ const { Footer } = Layout;
 
 function footer(){
     return(
-        <Footer style={footerStyle}>CopyRight To Abbe, Ensar, and Anu  ç </Footer>
+        <Footer style={footerStyle}>CopyRight Front-end: Abbe, Ensar, and Anu || Back-end: Ensar, Michelle, Samer, Humayun</Footer>
   );
   
   }
