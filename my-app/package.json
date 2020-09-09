@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:4000",
   "dependencies": {
+    "@stripe/stripe-js": "^1.9.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -53,6 +54,9 @@
     ]
   },
   "devDependencies": {
-    "@types/node": "^12.12.44"
+    "@types/node": "^12.12.44",
+    "all": "0.0.0",
+    "npm": "^6.14.8",
+    "run": "^1.4.0"
   }
 }
