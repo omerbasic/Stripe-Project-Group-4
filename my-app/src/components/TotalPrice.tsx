@@ -16,8 +16,23 @@ export class TotalPrice extends Component<{}, State>{
     constructor(props: {}){
         super(props)
     }
-      
-
+    
+    // This function is just a test to call the server
+    testOnclick() {
+        console.log("fetching from api....")
+        fetch('/test', {method: 'POST'})
+        .then((response) => {
+            console.log(response)
+            return response.json()
+        })
+        .then((data) => {
+            console.log(data)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
+    }
+    // End of the test function 
 
         render(){
             return(
@@ -26,7 +41,8 @@ export class TotalPrice extends Component<{}, State>{
                         <div style={CheckoutContainer}>
                             <h3>Card Payment</h3>
                             <p>Proceed with payment via card with</p>
-                            <button style={ButtonNoBorder}>
+                            <button style={ButtonNoBorder} onClick={this.testOnclick}>
+
                                <StripeLogo></StripeLogo>
                             </button>
                 
