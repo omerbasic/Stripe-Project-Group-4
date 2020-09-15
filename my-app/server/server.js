@@ -12,7 +12,7 @@ const { createCheckoutSession } = require('./controllers/payment.controller')
 
 
 const app = express();
-
+app.use(express.json())
 
 // ENDPOINTS FOR API HERE
 
