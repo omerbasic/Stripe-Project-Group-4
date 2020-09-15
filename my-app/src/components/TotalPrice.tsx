@@ -2,8 +2,7 @@ import React, { Component, CSSProperties} from 'react';
 import {CartConsumer, ContextState} from './context/cartContext'; 
 import { loadStripe } from '@stripe/stripe-js';
 import StripeLogo from './StripeLogo';
-import { Link } from 'react-router-dom';
-import ProductImage from './ProductImage';
+import {CartItem} from '../components/context/cartProvider';
 const stripePromise = loadStripe('pk_test_51HMTlsJD5SDAJbgRLvNPePxIqzQJmdnTBEjP3t9CiEBpP2gef5CYBC22T54K8gcPVYTxR7VERJcyphbV6C5gz9Iv00nA3PCKtj')
 
 
@@ -34,12 +33,33 @@ export class TotalPrice extends Component<{}, State>{
         })
     }
     // End of the test function 
-        handleClick = async (event:any) => {
-        // Get Stripe.js instance
+        handleClick = async (products: CartItem[]) => {
+        
+        const formattedProducts = products.map((product) => {
+            return {
+                price_data: {
+                    currency: "sek",
+                    product_data: {
+                        name: product.product.name,
+                    },
+                    unit_amount: product.product.price + "00",
+                },
+                quantity: product.quantity,
+            }
+            
+        })
+       
+        console.log(formattedProducts)
         const stripe = await stripePromise;
-    
+        
         // Call your backend to create the Checkout Session
-        const response = await fetch("/api/checkout-session", { method: 'POST' });
+        const response = await fetch("/api/checkout-session", {
+            method: 'POST', 
+            body: JSON.stringify(formattedProducts),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
     
         const session = await response.json();
     
@@ -64,7 +84,7 @@ export class TotalPrice extends Component<{}, State>{
                         <div style={CheckoutContainer}>
                             <h3>Card Payment</h3>
                             <p>Proceed with payment via card with</p>
-                            <button style={ButtonNoBorder} onClick={this.handleClick}>
+                            <button style={ButtonNoBorder} onClick={() => this.handleClick(contextData.cartItems)}>
 
                                <StripeLogo></StripeLogo>
                             </button>
