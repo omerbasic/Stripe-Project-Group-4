@@ -30,8 +30,8 @@ async function createCheckoutSession(req, res, body) {
         // Here we have to send clonedCart[] as body
       ],
       mode: "payment",
-      success_url: "https://example.com/success",
-      cancel_url: "https://example.com/cancel",
+      success_url: "http://localhost:4000/success",
+      cancel_url: "http://localhost:4000/cancel",
     });
   
     res.json({ id: session.id });
