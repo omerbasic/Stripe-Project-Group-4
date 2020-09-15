@@ -38,11 +38,11 @@ export class TotalPrice extends Component<{}, State>{
         const formattedProducts = products.map((product) => {
             return {
                 price_data: {
-                    currency: "usd",
+                    currency: "sek",
                     product_data: {
                         name: product.product.name,
                     },
-                    unit_amount: product.product.price,
+                    unit_amount: product.product.price + "00",
                 },
                 quantity: product.quantity,
             }
