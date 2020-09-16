@@ -25,7 +25,7 @@ app.post("/api/verifysession", verifyOrder);
 // app.post("/api/order", createOrder);
 
 // CORS - CROSS ORIGIN RESOUCE SHARING ????
-app.post("/test", (req, res) => {
+app.post("/success", (req, res) => {
   console.log('successs')
   res.status(201).json({ message: 'success' })
 })
