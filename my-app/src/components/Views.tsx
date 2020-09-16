@@ -20,6 +20,7 @@ function Views() {
             <Route path="/success" component = {SuccessPayment} />
             <Route path="/product/:view" component = {ProductView}/>
             <Route path="/" component = {ProductList} />
+            {/* <Route path="/success" component={SuccessView} /> */}
 
         </Switch>
         
