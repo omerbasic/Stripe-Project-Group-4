@@ -17,6 +17,7 @@ function Views() {
             <Route path="/checkout" component = {Checkout} />
             <Route path="/product/:view" component = {ProductView}/>
             <Route path="/" component = {ProductList} />
+            {/* <Route path="/success" component={SuccessView} /> */}
 
         </Switch>
         
