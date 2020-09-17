@@ -3,15 +3,16 @@ const fs = require('fs');
 
 
 async function verifyOrder(req, res){
-  /* console.log("products" + req.body) */
+  console.log("req body #1")
+  console.log(req.body)
   try {
     const session = await stripe.checkout.sessions.retrieve(req.body.id)
       if (session.payment_status=="paid" ){
 
           res.json({verified: true})
-          console.log(req.body)
-          fs.appendFileSync('./orders.json',JSON.stringify (req.body))
-          console.log(session)  
+          const completedOrder = await stripe.checkout.sessions.listLineItems(session.id)
+          fs.appendFileSync('./orders.json',JSON.stringify (completedOrder, null, 2))
+          
           } else {
             res.json({verified: false}) 
           }
@@ -20,6 +21,7 @@ async function verifyOrder(req, res){
     res.json({verified: false}) 
   }
 }
+
 
 // stripe.charges.create(body, (stripeErr, stripeRes) => {
 //   if (stripeErr) {

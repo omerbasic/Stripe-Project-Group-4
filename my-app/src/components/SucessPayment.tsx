@@ -1,12 +1,12 @@
 import React, { CSSProperties } from "react";
 import {RouteComponentProps} from "react-router-dom"
-
+ 
 export interface State {
   isLoading: boolean
   verified: boolean
 }
 type Props = RouteComponentProps<{ session_id: string }> & {}
-
+ 
 export class SuccessPayment extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -16,10 +16,10 @@ export class SuccessPayment extends React.Component<Props, State> {
     }
     
   }
-
+ 
   componentDidMount(){
     
-
+ 
     const searchParam= new URLSearchParams(this.props.location.search)
     const sessionId= searchParam.get("session_id")
     console.log(sessionId)
@@ -51,10 +51,10 @@ export class SuccessPayment extends React.Component<Props, State> {
     if (this.state.isLoading) {
       return <p>Loading...</p>
     } 
-
+ 
     if (this.state.verified== true) {
     
-
+ 
       console.log(this.state.verified)
       return (
         <div
@@ -90,14 +90,13 @@ export class SuccessPayment extends React.Component<Props, State> {
 }
 
 
-
+ 
 let failMsg: CSSProperties = {
     marginTop: '600px',
     fontSize: '50px',
     margin: 'auto',
     textAlign: 'center'
-
+ 
 }
-
-
+ 
 export default SuccessPayment;
