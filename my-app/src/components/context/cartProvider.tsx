@@ -22,7 +22,23 @@ export class CartProvider extends Component<{}, ProviderState> {
         }
     }
 
+    componentDidMount(){
+
+        const cartItemString=localStorage.getItem("cartItems")
+
+        const cartItems =  JSON.parse(cartItemString || "[]") 
+
+        this.setState({cartItems}) 
+    
+        
+    }
+    componentDidUpdate(){
+        localStorage.setItem("cartItems", JSON.stringify(this.state.cartItems))
+    }
+
+
     setSelectedShipping = (shipping: Shipping) => this.setState({ selectedShipping: shipping })
+    
     
     addProductToCart = (product: Product) => {
         const clonedCart:CartItem[] = Object.assign([], this.state.cartItems)
