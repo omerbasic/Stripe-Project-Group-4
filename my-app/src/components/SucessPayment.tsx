@@ -22,16 +22,13 @@ export class SuccessPayment extends React.Component<Props, State> {
  
     const searchParam= new URLSearchParams(this.props.location.search)
     const sessionId= searchParam.get("session_id")
-    console.log(sessionId)
     fetch('/api/verifysession', {method: 'POST', body: JSON.stringify({id: sessionId}), headers: {
       'Content-Type': 'application/json'
   }})
     .then((response) => {
-        console.log(response)
         return response.json()
     })
     .then((data) => {
-        console.log(data)
       if (data.verified== true){
         this.setState({ verified: true  });
         this.setState({ isLoading: false  });
@@ -53,9 +50,6 @@ export class SuccessPayment extends React.Component<Props, State> {
     } 
  
     if (this.state.verified== true) {
-    
- 
-      console.log(this.state.verified)
       return (
         <div
           style={{

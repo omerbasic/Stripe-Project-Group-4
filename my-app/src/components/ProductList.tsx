@@ -20,9 +20,7 @@ export interface State {
 }
 const key = 'updatable';
 
-const onFinish = (values:Props) => {
-    console.log('Success:', values);
-  
+const onFinish = (values:Props) => {  
     message.success({ content: 'Added to cart!', key, duration: 2 });
   
 };
