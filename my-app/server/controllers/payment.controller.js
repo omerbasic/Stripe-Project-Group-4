@@ -1,17 +1,35 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const fs = require('fs');
+const { exit } = require('process');
 
 
 async function verifyOrder(req, res){
-  console.log("req body #1")
-  console.log(req.body)
+  
   try {
+    const existingOrdersRaw = await fs.readFileSync('./orders.json', "utf8")
+    //1 läs in, 
+    //2 kolla om det finns en array, annars skapa array och pusha order, finns det en array kolla om req.body.id existerar pusha ifall den inte existerar
+  
+    let existingOrders = [];
+    if(existingOrdersRaw.length){
+      existingOrders = JSON.parse(existingOrdersRaw)
+      const foundOrder = existingOrders.find(order => order.sessionId == req.body.id)
+      if (foundOrder){
+        res.json({verified: false}) 
+        return;
+      }
+
+    }
     const session = await stripe.checkout.sessions.retrieve(req.body.id)
       if (session.payment_status=="paid" ){
 
-          res.json({verified: true})
-          const completedOrder = await stripe.checkout.sessions.listLineItems(session.id)
-          fs.appendFileSync('./orders.json',JSON.stringify (completedOrder, null, 2))
+
+        const completedOrder = await stripe.checkout.sessions.listLineItems(session.id)
+        completedOrder.sessionId = req.body.id
+        existingOrders.push(completedOrder)
+        await fs.writeFileSync('./orders.json', JSON.stringify(existingOrders, null, 2))
+
+        res.json({verified: true})
           
           } else {
             res.json({verified: false}) 
