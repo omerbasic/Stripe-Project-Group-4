@@ -52,7 +52,7 @@ export class CartProvider extends Component<{}, ProviderState> {
         else {
             clonedCart[foundProductIndex].quantity++
         }
-        this.setState({cartItems: clonedCart},  ()=> {console.log(this.state.cartItems)})
+        this.setState({cartItems: clonedCart})
         
     }
 
@@ -70,7 +70,7 @@ export class CartProvider extends Component<{}, ProviderState> {
                 clonedCart.splice(index, 1);
             }
         }
-        this.setState({cartItems: clonedCart}, ()=> {console.log(this.state)})
+        this.setState({cartItems: clonedCart})
     }
 
     getTotalPrice = () => {

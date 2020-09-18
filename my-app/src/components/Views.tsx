@@ -12,7 +12,7 @@ import Cart from './Cart'
 
 /** React function component */
 function Views() {
-        console.log('hejhej')
+    
         return (
         
         <Switch>

@@ -29,7 +29,7 @@ export class Header extends Component<{}, State>{
          inCart.push(product.quantity)
         })
 
-        console.log(inCart)
+     
 
 
 
